@@ -1,3 +1,19 @@
+.*
+*.launch
+#some files
+.gitignore
+.project
+.cproject
+_write.c
+
+# Directories to ignore
+includes/
+system/
+Debug/
+include/
+ldscripts/
+Release/
+
 # Object files
 *.o
 *.ko
