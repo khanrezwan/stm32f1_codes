@@ -35,10 +35,9 @@
 #include "stm32f1xx_hal.h"
 
 extern DMA_HandleTypeDef hdma_adc1;
-
 extern void Error_Handler(void);
 /* USER CODE BEGIN 0 */
-
+//extern void DMA1_Channel1_Tx_Complete(DMA_HandleTypeDef *hdma);
 /* USER CODE END 0 */
 /**
   * Initializes the Global MSP.
@@ -108,6 +107,8 @@ void HAL_ADC_MspInit(ADC_HandleTypeDef* hadc)
     hdma_adc1.Init.MemDataAlignment = DMA_MDATAALIGN_HALFWORD;
     hdma_adc1.Init.Mode = DMA_CIRCULAR;
     hdma_adc1.Init.Priority = DMA_PRIORITY_LOW;
+    //hdma_adc1.XferCpltCallback = &DMA1_Channel1_Tx_Complete;
+
     if (HAL_DMA_Init(&hdma_adc1) != HAL_OK)
     {
       Error_Handler();

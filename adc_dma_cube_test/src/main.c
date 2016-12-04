@@ -45,7 +45,7 @@ DMA_HandleTypeDef hdma_adc1;
 
 /* USER CODE BEGIN PV */
 /* Private variables ---------------------------------------------------------*/
-
+uint16_t ADC_Buffer[2];
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -57,7 +57,7 @@ static void MX_ADC1_Init(void);
 
 /* USER CODE BEGIN PFP */
 /* Private function prototypes -----------------------------------------------*/
-
+//void HAL_ADC_ConvCpltCallback(void);
 /* USER CODE END PFP */
 
 /* USER CODE BEGIN 0 */
@@ -68,7 +68,7 @@ int main(void)
 {
 
   /* USER CODE BEGIN 1 */
-	uint16_t ADC_Buffer[2];
+
   /* USER CODE END 1 */
 
   /* MCU Configuration----------------------------------------------------------*/
@@ -86,6 +86,7 @@ int main(void)
 
   /* USER CODE BEGIN 2 */
   HAL_ADC_Start_DMA(&hadc1,(uint32_t*)ADC_Buffer,2);
+  //HAL_DMA_Start_IT(&hdma_adc1,(uint32_t)&hadc1.Instance->DR,(uint32_t)ADC_Buffer,2);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -234,7 +235,11 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
+void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
+{
 
+	trace_printf("%d\n",ADC_Buffer[0]);
+}
 /* USER CODE END 4 */
 
 /**
@@ -242,7 +247,7 @@ static void MX_GPIO_Init(void)
   * @param  None
   * @retval None
   */
-void Error_Handler(void)
+void Error_Handler()
 {
   /* USER CODE BEGIN Error_Handler */
   /* User can add his own implementation to report the HAL error return state */

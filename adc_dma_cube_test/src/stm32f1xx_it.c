@@ -34,7 +34,6 @@
 #include "stm32f1xx_hal.h"
 #include "stm32f1xx.h"
 #include "stm32f1xx_it.h"
-
 /* USER CODE BEGIN 0 */
 
 /* USER CODE END 0 */
@@ -198,6 +197,8 @@ void DMA1_Channel1_IRQHandler(void)
 
   /* USER CODE END DMA1_Channel1_IRQn 1 */
 }
+
+
 
 /**
 * @brief This function handles ADC1 and ADC2 global interrupts.
