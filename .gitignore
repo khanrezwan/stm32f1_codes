@@ -10,7 +10,6 @@ _write.c
 includes/
 system/
 Debug/
-include/
 ldscripts/
 Release/
 
